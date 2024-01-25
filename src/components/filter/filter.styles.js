@@ -31,5 +31,5 @@ export const filterItem = styled.li`
   &:hover {
     color: #b672ff;
     text-decoration-line: underline;
-    cursor: pointer;
+    cursor: pointer;}
 `

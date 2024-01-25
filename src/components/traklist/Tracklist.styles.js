@@ -134,7 +134,7 @@ export const playlistTitleColumn = styled.div`
     text-transform: uppercase;
   `
 export const playlistTitleCol01 = styled(playlistTitleColumn)`
-  width: 447px;
+  width: 250px;
 `
 export const playlistTitleCol02 = styled(playlistTitleColumn)`
   width: 321px;

@@ -4,14 +4,14 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 // import { setCurrentIsLiked } from '../../store/slices/tracksSlice'
 import 'react-loading-skeleton/dist/skeleton.css'
 import * as S from './Track.styles'
-import ButtonSVG from '../buttonSVG/ButtonSVG'
+// import ButtonSVG from '../buttonSVG/ButtonSVG'
 // import { timePresent } from '../../utils/utils'
 // import {
 //   useAddToFavoritesMutation,
 //   useRemoveFromFavoritesMutation,
 // } from '../../services/appService'
 
-export const ListItem = ({ user }) => {
+export const ListItem = ({ user, setModal }) => 
   // const dispatch = useDispatch()
   // const [like] = useAddToFavoritesMutation()
   // const [dislike] = useRemoveFromFavoritesMutation()
@@ -25,8 +25,8 @@ export const ListItem = ({ user }) => {
   //     dispatch(setCurrentIsLiked(!isLiked))
   //   }
   // }
-  console.log(user)
-  return (
+  // console.log(user)
+   (
   <S.playlistItem
   // onClick={() => {
   //   if (user) {
@@ -57,31 +57,24 @@ export const ListItem = ({ user }) => {
         </S.trackTitle>
         <S.trackAuthor>
           <S.trackAuthorLink href={`${user?.html_url}`} >
-          {user ? "Перейти на страницу пользователя"
+          {user ? user?.html_url
  : <Skeleton width={356} />}
           </S.trackAuthorLink>
         </S.trackAuthor>
         <S.trackAlbum>
-          <S.trackAlbumLink>
-            {/* {track ? track.album : <Skeleton width={250} />} */}
+          <S.trackAlbumLink href={`${user?.gists_url
+}`}>
+          {user ? user?.repos_url
+
+ : <Skeleton width={356} />}
           </S.trackAlbumLink>
         </S.trackAlbum>
         {/* {track && (<div>{track.release_date}</div>)} */}
         <S.trackLikeTime>
           {user ? (
-            <>
-              <ButtonSVG
-                // click={() => {
-                //   toggleLike(track.id)
-                // }}
-                name="like"
-                modification="tracklike"
-                isActive
-              />
-              <S.trackTimeText>
-                {/* {timePresent(track.duration_in_seconds)}: */}
-              </S.trackTimeText>
-            </>
+              <S.userInfoBtn onClick={() => setModal(user?.login)}>
+               get more info
+              </S.userInfoBtn>
           ) : (
             <Skeleton width={50} />
           )}
@@ -89,4 +82,4 @@ export const ListItem = ({ user }) => {
       </S.playlistTrack>
     </SkeletonTheme>
   </S.playlistItem>
-)}
+)

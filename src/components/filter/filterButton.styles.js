@@ -4,7 +4,6 @@ export const filterCategory = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  background-color: black;
   &:not(:last-child) {
     margin-right: 10px;
   }
@@ -83,4 +82,17 @@ export const selectedFilterItems = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 13px; /* 100% */
+`
+export const filterItem = styled.li`
+  font-family: 'StratosSkyeng', sans-serif;
+  color: ${(props) => (props.$isSelected ? '#b672ff' : 'white')};
+  font-variant-numeric: lining-nums proportional-nums;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 120% */
+  &:hover {
+    color: #b672ff;
+    text-decoration-line: underline;
+    cursor: pointer;}
 `

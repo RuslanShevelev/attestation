@@ -1,71 +1,31 @@
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import FilterCategory from './FilterButton'
-import { selectFilterItem } from '../../store/slices/tracksSlice'
 import * as S from './filter.styles'
 
-export default function Filter({ tracks }) {
-  const [activeCategory, setActiveCategory] = useState('')
-  const dispatch = useDispatch()
-  const selectedFilterItems = useSelector(
-    (state) => state.tracks.selectedFilterItems
-  )
+export default function Filter() {
+  const [selectedFilter, setSelectedFilter] = useState('умолчанию')
+  const [order, setOrder] = useState('по убыванию')
 
   return (
     <S.centerblockFilter>
-      <S.filterTitle>Искать по:</S.filterTitle>
-      <FilterCategory
-        title="исполнителю"
-        content={Array.from(new Set(tracks.map((track) => track.author)))
-          .sort()
-          .map((author) => (
-            <S.filterItem
-              key={author}
-              $isSelected={selectedFilterItems.authors.includes(author)}
-              onClick={() => dispatch(selectFilterItem({ authors: author }))}
-            >
-              {author}
-            </S.filterItem>
-          ))}
-        isActive={activeCategory}
-        setActive={setActiveCategory}
-        selected={selectedFilterItems.authors.length}
+      <S.filterTitle>Сортировка по:</S.filterTitle>
+      <FilterCategory 
+        title={selectedFilter}
+        content={[
+          'умолчанию',
+          'количеству подписчиков',
+          'количеству репозиториев',
+          'дате присоединения',
+        ]}
+        activeFilter={selectedFilter}
+        setFilter={setSelectedFilter}
       />
-      {/* <MySelect defaultValue="исполнителю" options={tracks}> </MySelect> */}
-      <FilterCategory
-        title="году выпуска"
-        isActive={activeCategory}
-        setActive={setActiveCategory}
-        selected={(selectedFilterItems.sort === 'По умолчанию')? false : 1}
-        content={['По умолчанию', 'Сначала новые', 'Сначала старые'].map(
-          (item) => (
-            <S.filterItem
-              key={item}
-              onClick={() => dispatch(selectFilterItem({ sort: item }))}
-              $isSelected={selectedFilterItems.sort.includes(item)}
-            >
-              {item}
-            </S.filterItem>
-          )
-        )}
-      />
-      <FilterCategory
-        title="жанру"
-        isActive={activeCategory}
-        setActive={setActiveCategory}
-        content={Array.from(new Set(tracks.map((track) => track.genre)))
-          .sort()
-          .map((genre) => (
-            <S.filterItem
-              key={genre}
-              $isSelected={selectedFilterItems.genres.includes(genre)}
-              onClick={() => dispatch(selectFilterItem({ genres: genre }))}
-            >
-              {genre}
-            </S.filterItem>
-          ))}
-        selected={selectedFilterItems.genres.length}
-      />
+{selectedFilter !== 'умолчанию' &&      <FilterCategory
+        title={order}
+        content={['по убыванию', 'по возрастанию ']}
+        activeFilter={order}
+        setFilter={setOrder}
+      />}
     </S.centerblockFilter>
   )
 }

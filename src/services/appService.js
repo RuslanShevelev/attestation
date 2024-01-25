@@ -50,7 +50,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const usersApi = createApi({
   reducerPath: 'usersApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://api.github.com/search',
+    baseUrl: 'https://api.github.com',
   }),
   tagTypes: ['Users'],
 
@@ -72,25 +72,19 @@ export const usersApi = createApi({
     // }),
 
     getAllUsers: build.query({
-      query: () => '/users?q=shevelev+repos:%3E20+followers:%3E5&&sort=repositories',
-    //   providesTags: (result) =>
-    //     result
-    //       ? [
-    //           ...result.map(({ id }) => ({ type: 'Users', id })),
-    //           { type: 'Users', id: 'LIST' },
-    //         ]
-    //       : [{ type: 'Users', id: 'LIST' }],
+      query: (q) =>
+        `/search/users?q=${q}`,
+      //   providesTags: (result) =>
+      //     result
+      //       ? [
+      //           ...result.map(({ id }) => ({ type: 'Users', id })),
+      //           { type: 'Users', id: 'LIST' },
+      //         ]
+      //       : [{ type: 'Users', id: 'LIST' }],
     }),
-    // getFavorites: build.query({
-    //   query: () => 'catalog/track/favorite/all/',
-    //   providesTags: (result) =>
-    //     result
-    //       ? [
-    //           ...result.map(({ id }) => ({ type: 'Favorites', id })),
-    //           { type: 'Favorites', id: 'LIST' },
-    //         ]
-    //       : [{ type: 'Favorites', id: 'LIST' }],
-    // }),
+    getUserInfo: build.query({
+      query: (url) => `/users/${url}`,
+    }),
     // getSelections: build.query({
     //   query: (id) => `catalog/selection/${id}/`,
     //   providesTags: (result) =>
@@ -127,7 +121,8 @@ export const usersApi = createApi({
 })
 
 export const {
-  useGetAllUsersQuery
+  useGetAllUsersQuery,
+  useGetUserInfoQuery
   // useGetRegistrationMutation,
   // useGetTokensMutation,
   // useFetchAllTrucksQuery,

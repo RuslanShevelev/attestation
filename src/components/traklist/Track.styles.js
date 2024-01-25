@@ -1,4 +1,4 @@
-import  {styled, keyframes, css} from 'styled-components'
+import { styled, keyframes, css } from 'styled-components'
 
 export const bubbleOut = keyframes`
   0%,
@@ -14,7 +14,6 @@ export const playlistItem = styled.li`
   width: 100%;
   display: block;
   margin-bottom: 12px;
-  background-color: black;
 `
 export const playlistTrack = styled.div`
   display: -webkit-box;
@@ -42,7 +41,7 @@ export const trackTitle = styled.div`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 447px;
+  width: 250px;
 `
 export const trackTitleImage = styled.div`
   width: 51px;
@@ -60,11 +59,11 @@ export const trackTitleImage = styled.div`
   justify-content: center;
   margin-right: 17px;
 `
-export const userAvatar = styled.img `
+export const userAvatar = styled.img`
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;            
+  object-fit: cover;
 `
 export const trackTitleLink = styled.a`
   font-style: normal;
@@ -110,16 +109,22 @@ export const trackAlbumLink = styled.a`
 export const trackLikeTime = styled.div`
   display: flex;
 `
-export const trackTimeText = styled.span`
+export const userInfoBtn = styled.button`
+  height: 35px;
+  padding: 0 15px;
+  background-color: #b672ff;
+  border-radius: 7px;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   text-align: right;
-  color: #696969;
+  color: black;
+  border: none;
+  cursor: pointer;
 `
 const animationMixin = () => css`
-${bubbleOut} 0.6s ease-in-out infinite both;
+  ${bubbleOut} 0.6s ease-in-out infinite both;
 `
 
 export const playingDot = styled.div`
@@ -128,7 +133,7 @@ export const playingDot = styled.div`
   background-color: #b672ff;
   border-radius: 8px;
   display: block;
-  animation: ${ props => (props.$playing? animationMixin : "")};
+  animation: ${(props) => (props.$playing ? animationMixin : '')};
 `
 
 export const contentPlaylist = styled.ul`

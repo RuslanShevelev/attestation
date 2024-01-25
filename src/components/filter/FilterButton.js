@@ -1,26 +1,43 @@
+import { useState } from 'react'
 import * as S from './filterButton.styles'
 
 export default function FilterCategory({
   title,
   content,
-  isActive,
-  setActive,
-  selected
+  setFilter,
+  activeFilter,
+  selected,
 }) {
-  const toggleVisibility = () => setActive(isActive === title ? '' : title)
+  const [active, setActive] = useState(false)
+  const toggleVisibility = () => setActive(!active)
   return (
     <S.filterCategory>
       <S.filterButton
         type="button"
-        $active={isActive === title}
+        $active={title !== 'умолчанию'}
         onClick={toggleVisibility}
       >
         {title}
       </S.filterButton>
-      {selected > 0 && (<S.selectedFilterItems>{selected}</S.selectedFilterItems>)}
-      {isActive === title && (
+      {selected > 0 && (
+        <S.selectedFilterItems>{selected}</S.selectedFilterItems>
+      )}
+      {active && (
         <S.filterPopup className="menu">
-          <S.filterList>{content}</S.filterList>
+          <S.filterList>
+            {content.map((item) => (
+              <S.filterItem
+                key={item}
+                onClick={() => {
+                  setFilter(item)
+                  setActive(false)
+                }}
+                $isSelected={activeFilter === item}
+              >
+                {item}
+              </S.filterItem>
+            ))}
+          </S.filterList>
         </S.filterPopup>
       )}
     </S.filterCategory>
