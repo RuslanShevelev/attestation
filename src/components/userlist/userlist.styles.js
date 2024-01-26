@@ -136,7 +136,7 @@ export const contentTitle = styled.div`
   justify-content: space-between;
   margin-bottom: 24px;
 `
-export const contentPlaylist = styled.ul`
+export const contentUserList = styled.ul`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -151,7 +151,7 @@ export const contentPlaylist = styled.ul`
     display: none;
   }
 `
-export const playlistTitleColumn = styled.div`
+export const titleColumn = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -160,20 +160,20 @@ export const playlistTitleColumn = styled.div`
   color: #696969;
   text-transform: uppercase;
 `
-export const playlistTitleCol01 = styled(playlistTitleColumn)`
+export const titleCol01 = styled(titleColumn)`
   width: 250px;
 `
-export const playlistTitleCol02 = styled(playlistTitleColumn)`
+export const titleCol02 = styled(titleColumn)`
   width: 321px;
 `
-export const playlistTitleCol03 = styled(playlistTitleColumn)`
+export const titleCol03 = styled(titleColumn)`
   width: 245px;
 `
-export const playlistTitleCol04 = styled(playlistTitleColumn)`
+export const titleCol04 = styled(titleColumn)`
   width: 60px;
   text-align: end;
 `
-export const playlistTitleSvg = styled.svg`
+export const titleSvg = styled.svg`
   width: 12px;
   height: 12px;
   fill: transparent;

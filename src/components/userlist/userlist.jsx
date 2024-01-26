@@ -1,26 +1,23 @@
 import { useState } from 'react'
 import { useGetAllUsersQuery } from '../../services/appService'
-// import {
-//   // useDispatch,
-//    useSelector } from 'react-redux'
-// import {
-//   setCurrentTruck,
-//   selectFilterItem,
-// } from '../../store/slices/tracksSlice'
-import * as S from './Tracklist.styles'
+import * as S from './userlist.styles'
 import Filter from '../filter/Filter'
-import { ListItem } from './Track'
+import { ListItem } from './user'
 import { UserInfoModal } from '../modal/userInfoModal'
 
-const TrackList = () => {
-  const [findData, setFindData] = useState({})
-  const [urlParams, setUrlParams] = useState('q=Skypro')
+const UserList = () => {
+  const [findData, setFindData] = useState({per_page: 10})
+  const [urlParams, setUrlParams] = useState()
   const sendRequest = () => {
     const newParams = new URLSearchParams([...Object.entries(findData)])
     setUrlParams(newParams.toString())
   }
   const { data: users, error, isLoading } = useGetAllUsersQuery(urlParams)
+  console.log(users)
+  // const [page, setPage] = useState(1)
+  // const [perPage, setPerPage] = useState(5)
   const [modal, setModal] = useState('')
+
   return (
     <S.mainCentalBlock>
       <S.centalBlockSearch className="search">
@@ -45,14 +42,13 @@ const TrackList = () => {
       </S.filterBlock>
       <S.centalBlockH2>Пользователи:</S.centalBlockH2>
       <S.centalBlockContent>
-        <S.contentTitle className="playlist-title">
-          <S.playlistTitleCol01>avatar & login</S.playlistTitleCol01>
-          <S.playlistTitleCol02>page on GitHub</S.playlistTitleCol02>
-          <S.playlistTitleCol03>details</S.playlistTitleCol03>
-          <S.playlistTitleCol04>details</S.playlistTitleCol04>
+        <S.contentTitle>
+          <S.titleCol01>avatar & login</S.titleCol01>
+          <S.titleCol02>page on GitHub</S.titleCol02>
+          <S.titleCol04>details</S.titleCol04>
         </S.contentTitle>
-        <S.contentPlaylist>
-          {error && (
+        <S.contentUserList>
+          {(error && error.status !== 422) && (
             <li key={1} style={{ color: 'red' }}>
               Не удалось загрузить пользователей, попробуйте позже:{' '}
               {error.status}
@@ -62,7 +58,7 @@ const TrackList = () => {
             Array(10)
               .fill()
               .map(() => <ListItem key={Math.random()} />)}
-          {users?.items?.length > 0 ? (
+          {users?.items?.length ? (
             users.items.map((user) => (
               <ListItem key={user?.id} user={user} setModal={setModal} />
             ))
@@ -76,10 +72,10 @@ const TrackList = () => {
               />
             </S.filterNotFound>
           )}
-        </S.contentPlaylist>
+        </S.contentUserList>
       </S.centalBlockContent>
       {modal && <UserInfoModal url={modal} closeModal={setModal} />}
     </S.mainCentalBlock>
   )
 }
-export default TrackList
+export default UserList
