@@ -40,6 +40,33 @@ export const centalBlockContent = styled.div`
   -ms-flex-direction: column;
   flex-direction: column;
 `
+export const filterBlock = styled.div`
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+`
+export const userFindBtn = styled.button`
+  height: 35px;
+  width:150px;
+  padding: 0 15px;
+  background-color: #b672ff;
+  border-radius: 7px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: black;
+  border: none;
+  cursor: pointer;
+`
+
 export const searchSvg = styled.svg`
   width: 17px;
   height: 17px;
@@ -125,14 +152,14 @@ export const contentPlaylist = styled.ul`
   }
 `
 export const playlistTitleColumn = styled.div`
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: 2px;
-    color: #696969;
-    text-transform: uppercase;
-  `
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 2px;
+  color: #696969;
+  text-transform: uppercase;
+`
 export const playlistTitleCol01 = styled(playlistTitleColumn)`
   width: 250px;
 `
@@ -153,19 +180,19 @@ export const playlistTitleSvg = styled.svg`
   stroke: #696969;
 `
 export const filterNotFound = styled.div`
-width: 100%;
-margin-top: 50px;
-display: -webkit-box;
-display: -ms-flexbox;
-display: flex;
--webkit-box-orient: horizontal;
--webkit-box-direction: normal;
--ms-flex-direction: row;
-flex-direction: row;
--webkit-box-align: center;
--ms-flex-align: center;
-align-items: center;
-justify-content: center;
-font-size: 24px;
-line-height: 30px;
+  width: 100%;
+  margin-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 30px;
 `

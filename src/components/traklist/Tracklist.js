@@ -13,16 +13,13 @@ import { ListItem } from './Track'
 import { UserInfoModal } from '../modal/userInfoModal'
 
 const TrackList = () => {
-  // const userId = useSelector((state) => state.auth.id)
-  // const dispatch = useDispatch()
-  // const currentTrack = useSelector((state) => state.tracks.currentTrack)
-  // const isPlaying = useSelector((state) => state.tracks.isPlaying)
-  // const filteredTracks = useSelector((state) => state.tracks.filteredTracks)
-  // const filterIsActive = useSelector((state) => state.tracks.filter)
-  // const tracks = filterIsActive ? filteredTracks : users
   const [findData, setFindData] = useState({})
-  const { data: users, error, isLoading } = useGetAllUsersQuery(findData.q)
-  console.log(findData)
+  const [urlParams, setUrlParams] = useState('q=Skypro')
+  const sendRequest = () => {
+    const newParams = new URLSearchParams([...Object.entries(findData)])
+    setUrlParams(newParams.toString())
+  }
+  const { data: users, error, isLoading } = useGetAllUsersQuery(urlParams)
   const [modal, setModal] = useState('')
   return (
     <S.mainCentalBlock>
@@ -41,8 +38,12 @@ const TrackList = () => {
           }}
         />
       </S.centalBlockSearch>
+      <S.filterBlock>
+        {users && <Filter data={findData} setData={setFindData} />}
+        {/* {users && <Filter data={findData} setData={setFindData}/>} */}
+        <S.userFindBtn onClick={sendRequest}>Найти</S.userFindBtn>
+      </S.filterBlock>
       <S.centalBlockH2>Пользователи:</S.centalBlockH2>
-      {users && <Filter />}
       <S.centalBlockContent>
         <S.contentTitle className="playlist-title">
           <S.playlistTitleCol01>avatar & login</S.playlistTitleCol01>

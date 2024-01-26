@@ -1,14 +1,5 @@
-import { styled, keyframes, css } from 'styled-components'
+import { styled } from 'styled-components'
 
-export const bubbleOut = keyframes`
-  0%,
-  to {
-    transform: scale(0.5);
-  }
-  50% {
-    transform: scale(1);
-  }
-`
 
 export const playlistItem = styled.li`
   width: 100%;
@@ -122,18 +113,6 @@ export const userInfoBtn = styled.button`
   color: black;
   border: none;
   cursor: pointer;
-`
-const animationMixin = () => css`
-  ${bubbleOut} 0.6s ease-in-out infinite both;
-`
-
-export const playingDot = styled.div`
-  width: 16px;
-  height: 16px;
-  background-color: #b672ff;
-  border-radius: 8px;
-  display: block;
-  animation: ${(props) => (props.$playing ? animationMixin : '')};
 `
 
 export const contentPlaylist = styled.ul`

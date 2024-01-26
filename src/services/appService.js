@@ -72,8 +72,8 @@ export const usersApi = createApi({
     // }),
 
     getAllUsers: build.query({
-      query: (q) =>
-        `/search/users?q=${q}`,
+      query: (params) =>
+        `/search/users?${params}`,
       //   providesTags: (result) =>
       //     result
       //       ? [
