@@ -2,7 +2,9 @@ import styled, { css } from 'styled-components'
 
 const btnMargins = {
   prev: css`
-    margin-right: 23px;
+    /* margin-right: 23px; */
+    fill: #a53939;
+
   `,
   play: css`
     margin-right: 23px;
@@ -11,7 +13,6 @@ const btnMargins = {
     margin-right: 23px;
   `,
   next: css`
-    margin-right: 28px;
     fill: #a53939;
   `,
   repeat: css`
@@ -48,7 +49,8 @@ const btnMixin = (name) => {
 }
 
 export const BtnDiv = styled.div`
-  padding: 5px;
+width: 35px;
+height: 35px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -59,8 +61,8 @@ export const BtnDiv = styled.div`
 `
 const btnSvgSizes = {
   prev: css`
-    width: 15px;
-    height: 14px;
+    width: 35px;
+    height: 35px;
   `,
   play: css`
     width: 22px;
@@ -72,8 +74,8 @@ const btnSvgSizes = {
     flex-shrink: 0;
   `,
   next: css`
-    width: 15px;
-    height: 14px;
+    width: 35px;
+    height: 35px;
   `,
   repeat: css`
     width: 18px;

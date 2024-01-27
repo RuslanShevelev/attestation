@@ -6,6 +6,9 @@ export const mainCentalBlock = styled.div`
   -ms-flex-positive: 3;
   flex-grow: 3;
   padding: 20px 40px 20px 111px;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
 `
 export const centalBlockSearch = styled.div`
   width: 100%;
@@ -195,4 +198,32 @@ export const filterNotFound = styled.div`
   justify-content: center;
   font-size: 24px;
   line-height: 30px;
+`
+export const pageList = styled.ul`
+
+justify-self: end;
+display: flex;
+flex-direction: row;
+align-content: center;
+gap:5px;
+justify-content:center;
+`
+export const pageItem = styled.button`
+  height: 35px;
+  width:35px;
+  background-color: ${(props) => (props.$active ? '#b672ff' : '#696969')};
+  border-radius: 50%;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: black;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background-color: #b672ff;
+    transform: scale(1.1);
+  }
 `

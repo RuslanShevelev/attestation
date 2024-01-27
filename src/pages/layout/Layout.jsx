@@ -7,7 +7,6 @@ const Layout = () => (
       <S.main>
         <Outlet />
       </S.main>
-      <footer className="footer" />
     </S.container>
   </S.wrapper>
 )
