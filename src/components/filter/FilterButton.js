@@ -7,6 +7,7 @@ export default function FilterCategory({
   setFilter,
   activeFilter,
   selected,
+  pop,
 }) {
   const [active, setActive] = useState(false)
   const toggleVisibility = () => setActive(!active)
@@ -14,7 +15,7 @@ export default function FilterCategory({
     <S.filterCategory>
       <S.filterButton
         type="button"
-        $active={title !== 'умолчанию'}
+        $active={(title !== 'умолчанию') && (title !== 10)}
         onClick={toggleVisibility}
       >
         {title}
@@ -23,18 +24,24 @@ export default function FilterCategory({
         <S.selectedFilterItems>{selected}</S.selectedFilterItems>
       )}
       {active && (
-        <S.filterPopup className="menu">
+        <S.filterPopup $mode={pop}>
           <S.filterList>
             {content.map((item) => (
               <S.filterItem
-                key={item?.title}
+                key={item.title ?? item}
                 onClick={() => {
-                  setFilter(item)
+                  // if (item.title) {
+                    setFilter(item)
+                  // } else {
+                  //   setFilter(item)
+                  // }
                   setActive(false)
                 }}
-                $isSelected={activeFilter === item?.title}
+                $isSelected={
+                  activeFilter === (item?.title || item)
+                }
               >
-                {item?.title}
+                {item.title ?? item}
               </S.filterItem>
             ))}
           </S.filterList>

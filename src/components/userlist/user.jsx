@@ -4,7 +4,7 @@ import * as S from './user.styles'
 
 export const ListItem = ({ user, setModal }) => (
   <S.userListItem>
-    <SkeletonTheme baseColor="#313131" highlightColor="#444" height={19}>
+    <SkeletonTheme baseColor="#696969" highlightColor="#b672ff" height={19}>
       <S.userListUser>
         <S.userTitle>
           <S.userTitleImage>

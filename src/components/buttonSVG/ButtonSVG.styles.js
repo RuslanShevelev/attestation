@@ -145,7 +145,7 @@ export const BtnSvg = styled.svg`
   stroke: ${(props) => (props.$active ? '#FFFFFF' : '#696969')};
   &:hover {
     cursor: pointer;
-    fill: #696969;
+    fill: #b672ff;;
     stroke: #acacac;
     transform: scale(1.3);
   }

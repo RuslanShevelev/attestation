@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react'
+import { RotatingLines } from 'react-loader-spinner'
 import { useGetAllUsersQuery } from '../../services/appService'
 import * as S from './userlist.styles'
 import Filter from '../filter/Filter'
+import FilterCategory from '../filter/FilterButton'
 import { ListItem } from './user'
 import { UserInfoModal } from '../modal/userInfoModal'
-import { createPages } from '../../utils/pagescreator'
-import ButtonSVG from '../buttonSVG/ButtonSVG'
+import { Pagination } from '../pagination/pagelist'
 
 const UserList = () => {
   const [findData, setFindData] = useState({})
   const [query, setQuery] = useState(null)
   const [currentPage, setCurrentPage] = useState(1)
-  const [perPage] = useState(10)
+  const [perPage, setPerPage] = useState(10)
   const [urlParams, setUrlParams] = useState('')
   const [modal, setModal] = useState('')
 
@@ -26,14 +27,16 @@ const UserList = () => {
 
   const {
     data: users,
-    error,
+    isFetching,
     isLoading,
+    isError,
+    error,
     isSuccess,
   } = useGetAllUsersQuery(urlParams)
 
   const pagesCount = users ? Math.ceil(users.total_count / perPage) : null
-  const pages = []
-  createPages(pages, pagesCount, currentPage)
+  // const pages = []
+  // createPages(pages, pagesCount, currentPage)
   console.log(users)
 
   return (
@@ -66,60 +69,69 @@ const UserList = () => {
             Найти
           </S.userFindBtn>
         </S.filterBlock>
-        <S.centalBlockH2>{isSuccess && 'Пользователи'}</S.centalBlockH2>
-        {isSuccess && (
-          <S.centalBlockContent>
-            <S.contentTitle>
-              <S.titleCol01>avatar & login</S.titleCol01>
-              <S.titleCol02>page on GitHub</S.titleCol02>
-              <S.titleCol04>details</S.titleCol04>
-            </S.contentTitle>
-            <S.contentUserList>
-              {error && error.status !== 422 && (
-                <li key={1} style={{ color: 'red' }}>
-                  Не удалось загрузить пользователей, попробуйте позже:{' '}
-                  {error.status}
-                </li>
-              )}
-              {isLoading &&
-                Array(10)
-                  .fill()
-                  .map(() => <ListItem key={Math.random()} />)}
-              {users?.items?.length ? (
-                users.items.map((user) => (
-                  <ListItem key={user?.id} user={user} setModal={setModal} />
-                ))
-              ) : (
-                <S.filterNotFound>
-                  Пользователей, соответствующих вашему запросу, не найдено
-                  <img
-                    src="/img/smile_crying.png"
-                    alt="crying"
-                    style={{ width: 52, height: 52 }}
-                  />
-                </S.filterNotFound>
-              )}
-            </S.contentUserList>
-          </S.centalBlockContent>
-        )}
+        {/* <S.centalBlockH2>{isSuccess && 'Пользователи'}</S.centalBlockH2> */}
+        <S.centalBlockContent>
+          {isLoading && (
+            <S.loaderWrap>
+              <RotatingLines visible strokeColor="#b672ff" />
+            </S.loaderWrap>
+          )}
+          {isError && error.status !== 422 && (
+            <div style={{ color: 'red' }}>
+              Не удалось загрузить пользователей, попробуйте позже:{' '}
+              {error.status}
+            </div>
+          )}
+          {isSuccess && (
+            <>
+              <S.contentTitle>
+                <S.titleCol01>avatar & login</S.titleCol01>
+                <S.titleCol02>page on GitHub</S.titleCol02>
+                <S.titleCol04>details</S.titleCol04>
+              </S.contentTitle>
+              <S.contentUserList>
+                {isFetching &&
+                  Array(perPage)
+                    .fill()
+                    .map(() => <ListItem key={Math.random()} />)}
+                {users?.items?.length ? (
+                  users.items.map((user) => (
+                    <ListItem key={user?.id} user={user} setModal={setModal} />
+                  ))
+                ) : (
+                  <S.filterNotFound>
+                    Пользователей, соответствующих вашему запросу, не найдено
+                    <img
+                      src="/img/smile_crying.png"
+                      alt="crying"
+                      style={{ width: 52, height: 52 }}
+                    />
+                  </S.filterNotFound>
+                )}
+              </S.contentUserList>
+            </>
+          )}
+        </S.centalBlockContent>
       </div>
       {users?.items?.length && (
-          <S.pageList>
-          {currentPage > 1 && <ButtonSVG name="prev" click={() => setCurrentPage(currentPage - 1)}/>}
-            {pages.map((item) => (
-              <S.pageItem
-                key={item === '...'? Math.random() : item}
-                $active={currentPage === item}
-                onClick={() => {
-                  setCurrentPage(item)
-                }}
-                disabled={item === '...'}
-              >
-                {item}
-              </S.pageItem>
-            ))}
-          <ButtonSVG name="next" click={() => setCurrentPage(currentPage + 1)} />
-          </S.pageList>
+        <S.paginationBlock>
+          <S.usersPerPage>
+            <span> Выводить по </span>
+            <FilterCategory
+              title={perPage}
+              content={[10, 20, 30, 40]}
+              pop="up"
+              activeFilter={perPage}
+              setFilter={setPerPage}
+            />
+
+          </S.usersPerPage>
+          <Pagination
+            pagesCount={pagesCount}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+        </S.paginationBlock>
       )}
 
       {modal && <UserInfoModal url={modal} closeModal={setModal} />}

@@ -13,7 +13,7 @@ export const mainCentalBlock = styled.div`
 export const centalBlockSearch = styled.div`
   width: 100%;
   border-bottom: 1px solid #4e4e4e;
-  margin-bottom: 51px;
+  margin-bottom: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -31,7 +31,7 @@ export const centalBlockH2 = styled.h2`
   font-size: 64px;
   line-height: 72px;
   letter-spacing: -0.8px;
-  margin-bottom: 45px;
+  margin-bottom: 25px;
 `
 
 export const centalBlockContent = styled.div`
@@ -42,6 +42,9 @@ export const centalBlockContent = styled.div`
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  align-items: center;
+    justify-content: center;
+    width: 100%;
 `
 export const filterBlock = styled.div`
   display: -webkit-box;
@@ -127,6 +130,7 @@ export const contentTitle = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
@@ -143,13 +147,15 @@ export const contentUserList = styled.ul`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
+  gap: 10px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
   overflow-y: auto;
   scrollbar-width: none;
-  max-height: 500px;
+  max-height: 63vh;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -199,39 +205,29 @@ export const filterNotFound = styled.div`
   font-size: 24px;
   line-height: 30px;
 `
-export const pageList = styled.ul`
-  justify-self: end;
+export const loaderWrap = styled.div`
+position: fixed;
+width:auto;
+height: auto;
+inset: 0;
+display: flex;
+justify-content: center; 
+`
+export const paginationBlock = styled.div`
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+`
+export const usersPerPage = styled.div`
   display: flex;
   flex-direction: row;
-  align-content: center;
-  gap: 5px;
-  justify-content: center;
-`
-export const pageItem = styled.button`
-  height: 35px;
-  width: 35px;
-  background-color: ${(props) =>
-    props.$active ? '#b672ff' : '#696969'};
-  border-radius: 50%;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  text-align: center;
-  color: black;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s;
-  &:hover {
-    background-color: #b672ff;
-    transform: scale(1.1);
-  }
-  &:disabled {
-    background-color: transparent;
-    transform: none;
-    color: #696969;
-    border-radius: 0;
-    cursor: default;
-  }
-
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
 `

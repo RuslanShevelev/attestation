@@ -1,4 +1,4 @@
-import { styled } from 'styled-components'
+import { styled, css } from 'styled-components'
 
 export const filterCategory = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ export const filterCategory = styled.div`
 export const filterButton = styled.button`
   font-size: 16px;
   line-height: 24px; /* 112.5% */
-letter-spacing: 0.016px;
+  letter-spacing: 0.016px;
   background: transparent;
   border: 1px solid #ffffff;
   border-radius: 60px;
@@ -41,7 +41,21 @@ export const filterPopup = styled.div`
   border-radius: 12px;
   background: #313131;
   position: absolute;
-  top: 49px;
+  ${(props) => {
+    switch (props.$mode) {
+      case 'up':
+        return css`
+          bottom: 49px;
+          width: 80px;
+        `
+      default:
+        return css`
+          top: 49px;
+        `
+    }
+  }}
+
+  /* bottom: ${(props) => (props.$up ? '49px' : '')}; */
   z-index: 2;
 `
 
@@ -94,5 +108,6 @@ export const filterItem = styled.li`
   &:hover {
     color: #b672ff;
     text-decoration-line: underline;
-    cursor: pointer;}
+    cursor: pointer;
+  }
 `

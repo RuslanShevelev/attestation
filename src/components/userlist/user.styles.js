@@ -3,7 +3,6 @@ import { styled } from 'styled-components'
 export const userListItem = styled.li`
   width: 100%;
   display: block;
-  margin-bottom: 12px;
 `
 export const userListUser = styled.div`
   display: -webkit-box;
@@ -34,8 +33,8 @@ export const userTitle = styled.div`
   width: 250px;
 `
 export const userTitleImage = styled.div`
-  width: 51px;
-  height: 51px;
+  width: 50px;
+  height: 50px;
   /* padding: 16px; */
   background: #313131;
   display: -webkit-box;
@@ -92,7 +91,7 @@ export const userDetails = styled.div`
 export const userInfoBtn = styled.button`
   height: 35px;
   padding: 0 15px;
-  background-color: #b672ff;
+  background-color: #696969;;
   border-radius: 7px;
   font-style: normal;
   font-weight: 400;
@@ -102,6 +101,9 @@ export const userInfoBtn = styled.button`
   color: black;
   border: none;
   cursor: pointer;
+  &:hover{
+    background-color: #b672ff;
+  }
 `
 
 
