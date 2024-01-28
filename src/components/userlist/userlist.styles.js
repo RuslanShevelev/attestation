@@ -7,7 +7,7 @@ export const mainCentalBlock = styled.div`
   flex-grow: 3;
   padding: 20px 40px 20px 111px;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: space-between;
 `
 export const centalBlockSearch = styled.div`
@@ -56,7 +56,7 @@ export const filterBlock = styled.div`
 `
 export const userFindBtn = styled.button`
   height: 35px;
-  width:150px;
+  width: 150px;
   padding: 0 15px;
   background-color: #b672ff;
   border-radius: 7px;
@@ -200,18 +200,18 @@ export const filterNotFound = styled.div`
   line-height: 30px;
 `
 export const pageList = styled.ul`
-
-justify-self: end;
-display: flex;
-flex-direction: row;
-align-content: center;
-gap:5px;
-justify-content:center;
+  justify-self: end;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  gap: 5px;
+  justify-content: center;
 `
 export const pageItem = styled.button`
   height: 35px;
-  width:35px;
-  background-color: ${(props) => (props.$active ? '#b672ff' : '#696969')};
+  width: 35px;
+  background-color: ${(props) =>
+    props.$active ? '#b672ff' : '#696969'};
   border-radius: 50%;
   font-style: normal;
   font-weight: 400;
@@ -226,4 +226,12 @@ export const pageItem = styled.button`
     background-color: #b672ff;
     transform: scale(1.1);
   }
+  &:disabled {
+    background-color: transparent;
+    transform: none;
+    color: #696969;
+    border-radius: 0;
+    cursor: default;
+  }
+
 `

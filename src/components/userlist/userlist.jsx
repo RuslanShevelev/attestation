@@ -108,16 +108,17 @@ const UserList = () => {
           {currentPage > 1 && <ButtonSVG name="prev" click={() => setCurrentPage(currentPage - 1)}/>}
             {pages.map((item) => (
               <S.pageItem
-                key={item}
+                key={item === '...'? Math.random() : item}
                 $active={currentPage === item}
                 onClick={() => {
                   setCurrentPage(item)
                 }}
+                disabled={item === '...'}
               >
                 {item}
               </S.pageItem>
             ))}
-          <ButtonSVG name="next" />
+          <ButtonSVG name="next" click={() => setCurrentPage(currentPage + 1)} />
           </S.pageList>
       )}
 
