@@ -11,7 +11,7 @@ export const centerblockFilter = styled.div `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-bottom: 51px;
+  margin-bottom: 20px;
 `
 export const filterTitle = styled.div `
   font-style: normal;

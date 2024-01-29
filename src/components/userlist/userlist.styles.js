@@ -6,11 +6,14 @@ export const mainCentalBlock = styled.div`
   -ms-flex-positive: 3;
   flex-grow: 3;
   padding: 20px 40px 20px 111px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 export const centalBlockSearch = styled.div`
   width: 100%;
   border-bottom: 1px solid #4e4e4e;
-  margin-bottom: 51px;
+  margin-bottom: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,7 +31,7 @@ export const centalBlockH2 = styled.h2`
   font-size: 64px;
   line-height: 72px;
   letter-spacing: -0.8px;
-  margin-bottom: 45px;
+  margin-bottom: 25px;
 `
 
 export const centalBlockContent = styled.div`
@@ -39,6 +42,9 @@ export const centalBlockContent = styled.div`
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  align-items: center;
+    justify-content: center;
+    width: 100%;
 `
 export const filterBlock = styled.div`
   display: -webkit-box;
@@ -53,7 +59,7 @@ export const filterBlock = styled.div`
 `
 export const userFindBtn = styled.button`
   height: 35px;
-  width:150px;
+  width: 150px;
   padding: 0 15px;
   background-color: #b672ff;
   border-radius: 7px;
@@ -124,6 +130,7 @@ export const contentTitle = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
@@ -136,22 +143,24 @@ export const contentTitle = styled.div`
   justify-content: space-between;
   margin-bottom: 24px;
 `
-export const contentPlaylist = styled.ul`
+export const contentUserList = styled.ul`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
+  gap: 10px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
   overflow-y: auto;
   scrollbar-width: none;
-  max-height: 500px;
+  max-height: 63vh;
   &::-webkit-scrollbar {
     display: none;
   }
 `
-export const playlistTitleColumn = styled.div`
+export const titleColumn = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -160,20 +169,20 @@ export const playlistTitleColumn = styled.div`
   color: #696969;
   text-transform: uppercase;
 `
-export const playlistTitleCol01 = styled(playlistTitleColumn)`
+export const titleCol01 = styled(titleColumn)`
   width: 250px;
 `
-export const playlistTitleCol02 = styled(playlistTitleColumn)`
+export const titleCol02 = styled(titleColumn)`
   width: 321px;
 `
-export const playlistTitleCol03 = styled(playlistTitleColumn)`
+export const titleCol03 = styled(titleColumn)`
   width: 245px;
 `
-export const playlistTitleCol04 = styled(playlistTitleColumn)`
+export const titleCol04 = styled(titleColumn)`
   width: 60px;
   text-align: end;
 `
-export const playlistTitleSvg = styled.svg`
+export const titleSvg = styled.svg`
   width: 12px;
   height: 12px;
   fill: transparent;
@@ -195,4 +204,30 @@ export const filterNotFound = styled.div`
   justify-content: center;
   font-size: 24px;
   line-height: 30px;
+`
+export const loaderWrap = styled.div`
+position: fixed;
+width:auto;
+height: auto;
+inset: 0;
+display: flex;
+justify-content: center; 
+`
+export const paginationBlock = styled.div`
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+`
+export const usersPerPage = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
 `

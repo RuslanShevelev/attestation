@@ -14,6 +14,7 @@ export const container = styled.div`
   background-color: #181818;
 `
 export const main = styled.main`
+height: 100%;
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
