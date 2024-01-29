@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/attestation/static/css/main.4afb337a.css",
+    "main.js": "/attestation/static/js/main.473e6eaf.js",
+    "index.html": "/attestation/index.html",
+    "main.4afb337a.css.map": "/attestation/static/css/main.4afb337a.css.map",
+    "main.473e6eaf.js.map": "/attestation/static/js/main.473e6eaf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4afb337a.css",
+    "static/js/main.473e6eaf.js"
+  ]
+}
