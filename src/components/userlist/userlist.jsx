@@ -15,15 +15,19 @@ const UserList = () => {
   const [perPage, setPerPage] = useState(10)
   const [urlParams, setUrlParams] = useState('')
   const [modal, setModal] = useState('')
+  const [searchIn, setSearchIn] = useState({ title: 'логину', in: 'login' })
 
   useEffect(() => {
     if (query) {
       const newParams = new URLSearchParams([...Object.entries(query)])
       newParams.append('page', currentPage)
       newParams.append('per_page', perPage)
+      if (searchIn?.in) {
+        newParams.set('q', `${query.q} in:${searchIn.in}`)
+      }
       setUrlParams(newParams.toString())
     }
-  }, [query, currentPage, perPage])
+  }, [query, currentPage, perPage, searchIn])
 
   const {
     data: users,
@@ -35,9 +39,6 @@ const UserList = () => {
   } = useGetAllUsersQuery(urlParams)
 
   const pagesCount = users ? Math.ceil(users.total_count / perPage) : null
-  // const pages = []
-  // createPages(pages, pagesCount, currentPage)
-  console.log(users)
 
   return (
     <S.mainCentalBlock>
@@ -58,8 +59,22 @@ const UserList = () => {
           />
         </S.centalBlockSearch>
         <S.filterBlock>
+          {' '}
+          <S.usersPerPage>
+            <span> Искать по </span>
+            <FilterCategory
+              title={searchIn?.title}
+              content={[
+                { title: 'логину', in: 'login' },
+                { title: 'имени', in: 'name' },
+                { title: 'электронной почте', in: 'email' },
+                { title: 'везде', in: '' },
+              ]}
+              activeFilter={searchIn?.title}
+              setFilter={setSearchIn}
+            />
+          </S.usersPerPage>
           {users && <Filter data={query} setData={setQuery} />}
-          {/* {users && <Filter data={findData} setData={setFindData}/>} */}
           <S.userFindBtn
             onClick={() => {
               setCurrentPage(1)
@@ -69,7 +84,6 @@ const UserList = () => {
             Найти
           </S.userFindBtn>
         </S.filterBlock>
-        {/* <S.centalBlockH2>{isSuccess && 'Пользователи'}</S.centalBlockH2> */}
         <S.centalBlockContent>
           {isLoading && (
             <S.loaderWrap>
@@ -124,7 +138,6 @@ const UserList = () => {
               activeFilter={perPage}
               setFilter={setPerPage}
             />
-
           </S.usersPerPage>
           <Pagination
             pagesCount={pagesCount}

@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom'
-import * as S from '../main/main.styles'
+import * as S from './layout.styles'
 
 const Layout = () => (
   <S.wrapper>

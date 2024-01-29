@@ -1,6 +1,6 @@
 import { useRoutes } from 'react-router-dom'
 import ProtectedRoute from './protected-route'
-import Main from '../../pages/main/main'
+import UserList from '../userlist/userlist'
 import { NotFound } from '../../pages/notfound/notfound'
 
 const AppRoutes = () => {
@@ -9,7 +9,7 @@ const AppRoutes = () => {
     {
       element: <ProtectedRoute isAllowed />,
       children: [
-        { path: '/', element: <Main /> },
+        { path: '/', element: <UserList /> },
       ],
     },
     { path: '*', element: <NotFound /> },
