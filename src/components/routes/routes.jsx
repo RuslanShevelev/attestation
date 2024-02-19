@@ -9,7 +9,7 @@ const AppRoutes = () => {
     {
       element: <ProtectedRoute isAllowed />,
       children: [
-        { path: '/', element: <UserList /> },
+        { path: '/attestation/', element: <UserList /> },
       ],
     },
     { path: '*', element: <NotFound /> },
