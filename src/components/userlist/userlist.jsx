@@ -116,7 +116,7 @@ const UserList = () => {
                   <S.filterNotFound>
                     Пользователей, соответствующих вашему запросу, не найдено
                     <img
-                      src="/img/smile_crying.png"
+                      src="img/smile_crying.png"
                       alt="crying"
                       style={{ width: 52, height: 52 }}
                     />
